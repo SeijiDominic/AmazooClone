@@ -33,4 +33,9 @@ public class Product {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{ Name: %s, Vendor: %s, Price: %.2f, Available: %d }", name, vendor, price, stock);
+    }
 }

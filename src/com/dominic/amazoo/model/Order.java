@@ -45,5 +45,8 @@ public class Order {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Product: %s\nQuantity: %d\nSub-total: %.2f", product, quantity, total);
+    }
 }

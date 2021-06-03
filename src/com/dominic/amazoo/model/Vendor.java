@@ -30,4 +30,9 @@ public class Vendor {
     public OrderList getOrders() {
         return orders;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{ Name: %s %s }", firstName, lastName);
+    }
 }
