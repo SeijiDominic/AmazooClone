@@ -1,10 +1,17 @@
 package com.dominic.amazoo.model;
 
 public class Product {
-    private Vendor vendor;
-    private String name;
+    private final Vendor vendor;
+    private final String name;
     private Integer stock;
-    private Double price;
+    private final Double price;
+
+    public Product(Vendor vendor, String name, Integer stock, Double price) {
+        this.vendor = vendor;
+        this.name = name;
+        this.stock = stock;
+        this.price = price;
+    }
 
 
     public Vendor getVendor() {

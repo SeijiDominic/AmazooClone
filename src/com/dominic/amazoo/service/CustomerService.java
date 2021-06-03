@@ -3,6 +3,7 @@ package com.dominic.amazoo.service;
 import com.dominic.amazoo.model.Customer;
 import com.dominic.amazoo.model.Order;
 import com.dominic.amazoo.model.OrderList;
+import com.dominic.amazoo.model.Product;
 
 /**
  * This is where I put all customer's behavior and actions.

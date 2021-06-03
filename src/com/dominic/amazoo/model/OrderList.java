@@ -2,9 +2,9 @@ package com.dominic.amazoo.model;
 
 import java.util.List;
 
-public class OrderList {
+public class OrderList implements Cloneable {
     private final List<Order> list;
-    private Double total;
+    private Double total = 0.0;
 
     public OrderList(List<Order> list) {
         this.list = list;
@@ -23,24 +23,17 @@ public class OrderList {
         this.list.add(order);
     }
 
-    public void addToList(List<Order> orders) {
-        for(Order order : orders) {
+    public void addToList(OrderList orderList) {
+        for (Order order : orderList.list) {
             total += order.getTotal();
         }
-        this.list.addAll(orders);
-
+        this.list.addAll(orderList.getList());
     }
+
 
     public void removeFromList(Order order) {
         total -= order.getTotal();
         this.list.remove(order);
-    }
-
-    public void removeFromList(List<Order> orders) {
-        for(Order order : orders) {
-            total -= order.getTotal();
-        }
-        this.list.removeAll(orders);
     }
 
     public List<Order> getList() {
@@ -55,9 +48,16 @@ public class OrderList {
         return this.list.size();
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
 
-
+    @Override
+    public String toString() {
+        return String.format("Orders: %s\nTotal Amount: %s", list.toString(), total);
+    }
 }
 
 

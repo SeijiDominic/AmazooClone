@@ -4,13 +4,13 @@ import com.dominic.amazoo.exceptions.DemandExceededStockException;
 
 public class Order {
     private final Product product;
-    private final Integer quantity;
+    private Integer quantity;
     private final Double total;
 
     public Order(Product product, Integer quantity) {
         this.product = product;
 
-        if (isValidQuantity()) {
+        if (quantity <= product.getStock()) {
             this.quantity = quantity;
         } else throw new DemandExceededStockException();
 
@@ -29,11 +29,15 @@ public class Order {
         return product;
     }
 
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+
     //About to implement refund functionality. Refund just sends a negative value.
-    public void updateProductStock() throws DemandExceededStockException{
-        if (!isValidQuantity()) {
-            throw new DemandExceededStockException();
-        }
+    public void updateProductStock() throws DemandExceededStockException {
+        if (quantity > product.getStock()) throw new DemandExceededStockException();
+
         if (quantity >= 0) {
             this.product.setStock(product.getStock() - this.quantity);
         } else {
@@ -42,7 +46,4 @@ public class Order {
     }
 
 
-    public Boolean isValidQuantity() {
-        return quantity <= product.getStock();
-    }
 }

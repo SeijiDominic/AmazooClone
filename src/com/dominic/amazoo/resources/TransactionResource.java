@@ -14,13 +14,7 @@ public class TransactionResource {
         this.vendorService = vendorService;
     }
 
-    public void checkout() {
-        OrderList orders = customerService.getCart();
-        for (Order order : orders.getList()) {
-            order.getProduct().getStock()
-        }
-        vendorService.registerOrder(orders);
-    }
+
 
 
 }
